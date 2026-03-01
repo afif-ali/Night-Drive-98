@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://08ok2t2bbhaq"]
 
+[ext_resource type="Script" uid="uid://bv4250shfgpet" path="res://scenes/car/car.gd" id="1_rytg7"]
 [ext_resource type="Material" uid="uid://csm1quswa780x" path="res://assets/Retro Car1.0/car.tres" id="1_yhfra"]
 [ext_resource type="Material" uid="uid://bqlwwig06odbf" path="res://assets/Retro Car1.0/window.tres" id="2_rytg7"]
 
@@ -566,6 +567,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_dpd1p")
 
 [node name="Car" type="Node3D" unique_id=1654227961 groups=["controller"]]
+script = ExtResource("1_rytg7")
 
 [node name="Car" type="Node3D" parent="." unique_id=1576897138]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71, 0)
@@ -622,7 +624,10 @@ mesh = SubResource("ArrayMesh_gruua")
 transform = Transform3D(-100, 4.5796976e-05, 3.5280096e-05, 5.6425983e-05, 90.59781, 42.332462, -1.2576003e-05, 42.332455, -90.597824, 0.52544034, 0.09080356, 0.23316357)
 mesh = SubResource("ArrayMesh_quugw")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=800930961]
-transform = Transform3D(-0.9998477, 0, 0.01745246, 0.0018242786, 0.9945219, 0.10451254, -0.017356852, 0.104528464, -0.99437046, 0.45715857, 1.175686, -0.32620233)
+[node name="Neck" type="Node3D" parent="." unique_id=1644005345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457, 1.176, -0.31739524)
+
+[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=800930961]
+transform = Transform3D(-0.9998477, 0, 0.01745246, 0.0018242786, 0.9945219, 0.10451254, -0.017356852, 0.104528464, -0.99437046, 0, 0, 0)
 fov = 90.0
 far = 100.0

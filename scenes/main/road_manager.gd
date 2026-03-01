@@ -11,8 +11,10 @@ const RENDER_DIST = 20
 
 func _ready() -> void:
 	add_chunk_index(0, RENDER_DIST)
-	add_chunk_index(1, 20)
-	print(materials)
+#                  ( INDEX , AMOUNT )
+	add_chunk_index(   1   ,   20   )
+	add_chunk_index(   0   ,   01   )
+	add_chunk_index(   1   ,   20   )
 	
 	modules.resize(RENDER_DIST*2+1)
 	for i in range(RENDER_DIST*2+1):
