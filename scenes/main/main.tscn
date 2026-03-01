@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b0dfptsokukud"]
+
+[ext_resource type="PackedScene" uid="uid://08ok2t2bbhaq" path="res://scenes/car/car.tscn" id="3_k2fmo"]
+[ext_resource type="Script" uid="uid://cwhqq73jhoe3k" path="res://scenes/main/road_manager.gd" id="4_l3cfh"]
+
+[node name="Main" type="Node3D" unique_id=119509902]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1259563194]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Car" parent="." unique_id=1654227961 instance=ExtResource("3_k2fmo")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="RoadManager" type="Node3D" parent="." unique_id=1079258026]
+script = ExtResource("4_l3cfh")

@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bqlwwig06odbf"]
+
+[ext_resource type="Texture2D" uid="uid://bgsma7oq4xtkr" path="res://assets/Retro Car1.0/Emissive Texture.png" id="1_yl0vv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xfqpk"]
+frequency = 0.0395
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1d7al"]
+noise = SubResource("FastNoiseLite_xfqpk")
+normalize = false
+
+[resource]
+transparency = 1
+albedo_color = Color(0.31888023, 0.409452, 0.48599297, 0.34509805)
+albedo_texture = SubResource("NoiseTexture2D_1d7al")
+emission_texture = ExtResource("1_yl0vv")

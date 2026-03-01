@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://csm1quswa780x"]
+
+[ext_resource type="Texture2D" uid="uid://b6yylheiiaa5e" path="res://assets/Retro Car1.0/Black Car Texture.png" id="1_bv0la"]
+[ext_resource type="Texture2D" uid="uid://bgsma7oq4xtkr" path="res://assets/Retro Car1.0/Emissive Texture.png" id="2_g0awu"]
+
+[resource]
+albedo_texture = ExtResource("1_bv0la")
+emission_enabled = true
+emission_texture = ExtResource("2_g0awu")
