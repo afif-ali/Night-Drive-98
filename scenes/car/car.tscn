@@ -633,7 +633,7 @@ mesh = SubResource("ArrayMesh_quugw")
 [node name="XPivot" type="Node3D" parent="Neck" unique_id=838487717]
 
 [node name="Camera3D" type="Camera3D" parent="Neck/XPivot" unique_id=800930961]
-transform = Transform3D(-0.9998477, 0, 0.01745246, 0.0018242786, 0.9945219, 0.10451254, -0.017356852, 0.104528464, -0.99437046, 0, 0, 0)
+transform = Transform3D(-0.9998477, -0.0018242786, 0.017356852, 0, 0.9945219, 0.104528464, -0.017452458, 0.10451254, -0.99437046, 0, 0, 0)
 current = true
 fov = 90.0
 far = 100.0
@@ -643,7 +643,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07550049, 0.7457886, -0.371
 shape = SubResource("BoxShape3D_rytg7")
 
 [node name="CameraIdlePos" type="Marker3D" parent="." unique_id=1958236472]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45318943, 1.1664464, -0.2274264)
+transform = Transform3D(-0.9998477, -0.0018242786, 0.017356852, 0, 0.9945219, 0.104528464, -0.017452458, 0.10451254, -0.99437046, 0.45318943, 1.1664464, -0.2274264)
 
 [node name="EngineSFX" type="AudioStreamPlayer" parent="." unique_id=1897123485]
 stream = ExtResource("4_x7uf8")

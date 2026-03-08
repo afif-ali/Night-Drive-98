@@ -85,5 +85,7 @@ func _on_attack_trigger_body_entered(body: Node3D) -> void:
 		tween.tween_property($AttackTrigger/Creature, "global_position", $Car.position + Vector3(0.0,0.0,6.0), 4)
 		tween.tween_callback(func():
 			$AttackTrigger/AnimationTree.get("parameters/playback").travel("A")
-			$Car.position = $RunTrigger/Creature/road_creature_reference_skeleton/Skeleton3D/Pin.global_position
+			$Car.picked_up = true
+			$Car.monster_head = $AttackTrigger/Creature/road_creature_reference_skeleton/Skeleton3D/Head
+			$Car.camera_anchor = $AttackTrigger/Creature/road_creature_reference_skeleton/Skeleton3D/Pin
 		)

@@ -606,6 +606,11 @@ skin = SubResource("Skin_2t25u")
 skeleton = NodePath("..")
 
 [node name="Pin" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1367478473]
-transform = Transform3D(0.7359725, -0.6606995, 0.14771813, -0.6554516, -0.6407428, 0.3997891, -0.16949111, -0.39105582, -0.9046258, -0.030198729, -0.01586926, 0.02216284)
-bone_name = "ValveBiped.Bip01_R_Hand"
-bone_idx = 10
+transform = Transform3D(0.6709546, -0.5266391, 0.5219877, -0.73807365, -0.4067586, 0.5383253, -0.07118014, -0.7464572, -0.66161513, -0.031191025, -0.018706977, 0.019941328)
+bone_name = "ValveBiped.Bip01_R_Finger1"
+bone_idx = 11
+
+[node name="Head" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1044449787]
+transform = Transform3D(0.98904204, 0.09228793, 0.11523117, -0.14421384, 0.43696195, 0.8878433, 0.031585515, -0.8947324, 0.44548315, 0.0003643121, -0.014010761, 0.0423729)
+bone_name = "ValveBiped.Bip01_Neck1_end"
+bone_idx = 6

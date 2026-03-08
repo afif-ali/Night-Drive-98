@@ -7,6 +7,9 @@ const DECELERATION = 3
 const CAMERA_LATENCY = 50
 
 var can_move = true
+@onready var camera_anchor:Node3D = $CameraIdlePos
+var picked_up = false
+var monster_head
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -29,5 +32,8 @@ func _physics_process(delta: float) -> void:
 	$EngineSFX.volume_linear = 0.8*velocity.z/(SPEED*delta)
 	
 	move_and_slide()
-
-	$Neck.global_position = lerp($Neck.global_position, $CameraIdlePos.global_position, CAMERA_LATENCY * delta)
+	if picked_up:
+		$Neck.global_position = lerp($Neck.global_position, camera_anchor.global_position + Vector3(-0.1, 0.1, -0.1), CAMERA_LATENCY * delta)
+		$Neck/XPivot/Camera3D.look_at(monster_head.global_position, Vector3.UP)
+	else:
+		$Neck.global_position = lerp($Neck.global_position, camera_anchor.global_position, CAMERA_LATENCY * delta)

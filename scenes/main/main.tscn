@@ -4793,7 +4793,7 @@ light_energy = 0.5
 shadow_enabled = true
 
 [node name="Car" parent="." unique_id=1654227961 instance=ExtResource("3_k2fmo")]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1, 0, 480)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1, 0, 180)
 
 [node name="ErrorContainer" type="Node3D" parent="Car" unique_id=1434577520]
 
