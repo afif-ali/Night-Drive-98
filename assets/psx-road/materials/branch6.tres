@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8ilrd3rf5jxh"]
+
+[ext_resource type="Texture2D" uid="uid://cgpjecwtekgq3" path="res://assets/psx-road/source/textures/Branch_6.png" id="1_11iuw"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_11iuw")

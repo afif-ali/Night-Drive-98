@@ -1,0 +1,123 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cbqt5qj1uxnlb"
+path="res://.godot/imported/road-module.blend-54c42ce8430f23e2f26cfe4aee08bd63.scn"
+
+[deps]
+
+source_file="res://assets/psx-road/source/road-module.blend"
+dest_files=["res://.godot/imported/road-module.blend-54c42ce8430f23e2f26cfe4aee08bd63.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Branch_2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/branch2.tres",
+"use_external/path": "uid://climfstogw56g"
+},
+"Branch_3": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/branch3.tres",
+"use_external/path": "uid://ce5ea7aaswnj"
+},
+"Branch_4": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/branch4.tres",
+"use_external/path": "uid://0afaqq37bjcd"
+},
+"Branch_5": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/branch5.tres",
+"use_external/path": "uid://6poohwxqgjnt"
+},
+"Branch_6": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/branch6.tres",
+"use_external/path": "uid://b8ilrd3rf5jxh"
+},
+"Grass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/grass.tres",
+"use_external/path": "uid://xye1igxur385"
+},
+"Road": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/road.tres",
+"use_external/path": "uid://rbvhotxdjnef"
+},
+"Wood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/wood.tres",
+"use_external/path": "uid://bowxp10lqfiq3"
+},
+"Wood_3": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/wood3.tres",
+"use_external/path": "uid://b46dv3sp7ti5b"
+},
+"Wood_4": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/wood4.tres",
+"use_external/path": "uid://dthtmr5taqpdw"
+},
+"Wood_5": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/wood5.tres",
+"use_external/path": "uid://diwcf1t4iq2c5"
+},
+"Wood_6": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/psx-road/materials/wood6.tres",
+"use_external/path": "uid://c04h1xhvflwm1"
+}
+}
+}
+blender/nodes/visible=0
+blender/nodes/active_collection_only=false
+blender/nodes/punctual_lights=true
+blender/nodes/cameras=true
+blender/nodes/custom_properties=true
+blender/nodes/modifiers=1
+blender/meshes/colors=false
+blender/meshes/uvs=true
+blender/meshes/normals=true
+blender/meshes/export_geometry_nodes_instances=false
+blender/meshes/gpu_instances=false
+blender/meshes/tangents=true
+blender/meshes/skins=2
+blender/meshes/export_bones_deforming_mesh_only=false
+blender/materials/unpack_enabled=true
+blender/materials/export_materials=1
+blender/animation/limit_playback=true
+blender/animation/always_sample=true
+blender/animation/group_tracks=true
+gltf/naming_version=2

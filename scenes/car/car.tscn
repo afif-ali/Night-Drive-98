@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bv4250shfgpet" path="res://scenes/car/car.gd" id="1_rytg7"]
 [ext_resource type="Material" uid="uid://csm1quswa780x" path="res://assets/Retro Car1.0/car.tres" id="1_yhfra"]
 [ext_resource type="Material" uid="uid://bqlwwig06odbf" path="res://assets/Retro Car1.0/window.tres" id="2_rytg7"]
+[ext_resource type="AudioStream" uid="uid://e6bq0kylydp0" path="res://assets/engine.mp3" id="4_x7uf8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bcxpe"]
 _surfaces = [{
@@ -566,7 +567,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_dpd1p")
 
-[node name="Car" type="Node3D" unique_id=1654227961 groups=["controller"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rytg7"]
+size = Vector3(1.7076416, 1.4910889, 4.7267456)
+
+[node name="Car" type="CharacterBody3D" unique_id=1388347599 groups=["controller"]]
 script = ExtResource("1_rytg7")
 
 [node name="Car" type="Node3D" parent="." unique_id=1576897138]
@@ -625,9 +629,25 @@ transform = Transform3D(-100, 4.5796976e-05, 3.5280096e-05, 5.6425983e-05, 90.59
 mesh = SubResource("ArrayMesh_quugw")
 
 [node name="Neck" type="Node3D" parent="." unique_id=1644005345]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457, 1.176, -0.31739524)
 
-[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=800930961]
+[node name="XPivot" type="Node3D" parent="Neck" unique_id=838487717]
+
+[node name="Camera3D" type="Camera3D" parent="Neck/XPivot" unique_id=800930961]
 transform = Transform3D(-0.9998477, 0, 0.01745246, 0.0018242786, 0.9945219, 0.10451254, -0.017356852, 0.104528464, -0.99437046, 0, 0, 0)
+current = true
 fov = 90.0
 far = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1234841017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07550049, 0.7457886, -0.37130737)
+shape = SubResource("BoxShape3D_rytg7")
+
+[node name="CameraIdlePos" type="Marker3D" parent="." unique_id=1958236472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45318943, 1.1664464, -0.2274264)
+
+[node name="EngineSFX" type="AudioStreamPlayer" parent="." unique_id=1897123485]
+stream = ExtResource("4_x7uf8")
+pitch_scale = 0.5
+autoplay = true
+playback_type = 1
+parameters/looping = true

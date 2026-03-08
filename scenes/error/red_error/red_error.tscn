@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://rfo0pcbtw7fl"]
+
+[ext_resource type="PackedScene" uid="uid://spi52mgnt6xh" path="res://scenes/error/red_error/red_error_vp.tscn" id="1_501q6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_501q6"]
+viewport_path = NodePath("RedErrorVp")
+
+[node name="RedError" type="Sprite3D" unique_id=317949388]
+billboard = 1
+texture_filter = 2
+texture = SubResource("ViewportTexture_501q6")
+
+[node name="RedErrorVp" parent="." unique_id=1723833568 instance=ExtResource("1_501q6")]

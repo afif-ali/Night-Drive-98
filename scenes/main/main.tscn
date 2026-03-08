@@ -1,32 +1,74 @@
 [gd_scene format=3 uid="uid://b0dfptsokukud"]
 
+[ext_resource type="Script" uid="uid://cj450qneia2rx" path="res://scenes/main/main.gd" id="1_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://08ok2t2bbhaq" path="res://scenes/car/car.tscn" id="3_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://dy4opjmvfxs3l" path="res://scenes/dialogue/dialogue.tscn" id="3_l3cfh"]
+[ext_resource type="Environment" uid="uid://b1hi51c7b8jdg" path="res://scenes/main/normal_env.tres" id="3_ow5a4"]
 [ext_resource type="Script" uid="uid://cwhqq73jhoe3k" path="res://scenes/main/road_manager.gd" id="4_l3cfh"]
+[ext_resource type="FontFile" uid="uid://cepqwph0cg88i" path="res://assets/Pix32.ttf" id="5_6q06x"]
+[ext_resource type="AudioStream" uid="uid://cnp76ptfj1xnq" path="res://assets/error.mp3" id="7_hujxm"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iuonh"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_l3cfh"]
+size = Vector3(8, 8, 8)
 
-[sub_resource type="Sky" id="Sky_k2fmo"]
-sky_material = SubResource("ProceduralSkyMaterial_iuonh")
-
-[sub_resource type="Environment" id="Environment_l3cfh"]
-background_mode = 2
-sky = SubResource("Sky_k2fmo")
-tonemap_mode = 2
-glow_enabled = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_6q06x"]
+size = Vector3(8, 8, 8)
 
 [node name="Main" type="Node3D" unique_id=119509902]
+script = ExtResource("1_l3cfh")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=10970632]
-environment = SubResource("Environment_l3cfh")
+[node name="DebugScreen" type="Control" parent="." unique_id=2083620132]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="DebugScreen" unique_id=1025862728]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_6q06x")
+theme_override_font_sizes/font_size = 12
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1827984978]
+environment = ExtResource("3_ow5a4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1259563194]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.9790301, 0.9764189, 0.99999994, 1)
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="Car" parent="." unique_id=1654227961 instance=ExtResource("3_k2fmo")]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 99)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1, 0, 170)
+
+[node name="ErrorContainer" type="Node3D" parent="Car" unique_id=1434577520]
 
 [node name="RoadManager" type="Node3D" parent="." unique_id=1079258026]
 script = ExtResource("4_l3cfh")
+
+[node name="Dialogue" parent="." unique_id=2035017705 instance=ExtResource("3_l3cfh")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="IntroTextTrigger" type="Area3D" parent="." unique_id=215183779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroTextTrigger" unique_id=695759370]
+shape = SubResource("BoxShape3D_l3cfh")
+
+[node name="WorldMorphTrigger" type="Area3D" parent="." unique_id=1833994482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMorphTrigger" unique_id=128379790]
+shape = SubResource("BoxShape3D_6q06x")
+
+[node name="ErrorSFX" type="AudioStreamPlayer" parent="." unique_id=890861541]
+stream = ExtResource("7_hujxm")
+volume_db = -20.0
+max_polyphony = 15
+
+[connection signal="body_entered" from="IntroTextTrigger" to="." method="_on_intro_text_trigger_body_entered"]
+[connection signal="body_entered" from="WorldMorphTrigger" to="." method="_on_world_morph_trigger_body_entered"]

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://diwcf1t4iq2c5"]
+
+[ext_resource type="Texture2D" uid="uid://c4cjflo4re836" path="res://assets/psx-road/source/textures/Wood_05.jpg" id="1_sjwea"]
+
+[resource]
+albedo_texture = ExtResource("1_sjwea")
