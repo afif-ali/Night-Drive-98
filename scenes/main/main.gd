@@ -10,7 +10,6 @@ func _process(delta: float) -> void:
 
 func _on_intro_text_trigger_body_entered(body: Node3D) -> void:
 	if body.name == "Car":
-		print("boom")
 		$Dialogue.say("Its starting to get dark out ...")
 		await get_tree().create_timer(4).timeout
 		$Dialogue.say("I should head home .")
@@ -56,3 +55,8 @@ func _on_world_morph_trigger_body_entered(body: Node3D) -> void:
 		$Dialogue.say("What the hell is going on...")
 		await get_tree().create_timer(2).timeout
 		$Dialogue.reset()
+
+
+func _on_peek_trigger_body_entered(body: Node3D) -> void:
+	if body.name == "Car":
+		$AnimationPlayer.play("peek")

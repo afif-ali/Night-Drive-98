@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cpxvtk1fwygv2"]
+
+[ext_resource type="Texture2D" uid="uid://hlyvs1tlovpl" path="res://assets/country-road-creature-rig/textures/head.png" id="1_jbpph"]
+
+[resource]
+albedo_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+albedo_texture = ExtResource("1_jbpph")

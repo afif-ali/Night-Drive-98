@@ -6,9 +6,16 @@
 [ext_resource type="Environment" uid="uid://b1hi51c7b8jdg" path="res://scenes/main/normal_env.tres" id="3_ow5a4"]
 [ext_resource type="Script" uid="uid://cwhqq73jhoe3k" path="res://scenes/main/road_manager.gd" id="4_l3cfh"]
 [ext_resource type="FontFile" uid="uid://cepqwph0cg88i" path="res://assets/Pix32.ttf" id="5_6q06x"]
+[ext_resource type="ArrayMesh" uid="uid://crgafi1hsrprh" path="res://assets/country-road-creature-rig/source/head.obj" id="5_blune"]
+[ext_resource type="Material" uid="uid://cpxvtk1fwygv2" path="res://assets/country-road-creature-rig/materials/head.tres" id="6_th5th"]
+[ext_resource type="Material" uid="uid://bikvsdi4d1tfy" path="res://assets/country-road-creature-rig/materials/eyes.tres" id="7_7smn1"]
 [ext_resource type="AudioStream" uid="uid://cnp76ptfj1xnq" path="res://assets/error.mp3" id="7_hujxm"]
 [ext_resource type="Shader" uid="uid://jhqaembl8m4c" path="res://scenes/main/noise.gdshader" id="8_yyfjg"]
-[ext_resource type="AudioStream" uid="uid://cv8tlf4ey8u3b" path="res://assets/static.mp3" id="9_b1x3f"]
+[ext_resource type="AudioStream" uid="uid://e7vwweg81kap" path="res://assets/static.mp3" id="9_b1x3f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ouso4"]
+shader = ExtResource("8_yyfjg")
+shader_parameter/noise_intensity = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l3cfh"]
 size = Vector3(8, 8, 8)
@@ -16,9 +23,180 @@ size = Vector3(8, 8, 8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6q06x"]
 size = Vector3(8, 8, 8)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ouso4"]
-shader = ExtResource("8_yyfjg")
-shader_parameter/noise_intensity = 0.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_blune"]
+size = Vector3(8, 8, 8)
+
+[sub_resource type="Animation" id="Animation_blune"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.1944245, 1.110576, -0.85178906)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.825673e-09, 1.6898453, -1.9198623)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Noise:material:shader_parameter/noise_intensity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Noise/StaticSFX:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-10.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Noise/StaticSFX:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_th5th"]
+resource_name = "peek"
+length = 10.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2, 0.6, -0.852), Vector3(2, 0.6, -0.2), Vector3(2, 0.6, -0.2), Vector3(2, 0.6, -0.852)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.17453292, 1.6894788, -2.268928), Vector3(0.17453292, 1.6894788, -2.268928)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Noise:material:shader_parameter/noise_intensity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 9.9, 10),
+"transitions": PackedFloat32Array(3.1383367, 1, 1),
+"update": 0,
+"values": [0.0, 0.30000001425, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Noise/StaticSFX:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(0.19614604, 1),
+"update": 0,
+"values": [-50.0, -10.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Noise/StaticSFX:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7smn1"]
+_data = {
+&"RESET": SubResource("Animation_blune"),
+&"peek": SubResource("Animation_th5th")
+}
 
 [node name="Main" type="Node3D" unique_id=119509902]
 script = ExtResource("1_l3cfh")
@@ -36,45 +214,16 @@ offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_6q06x")
 theme_override_font_sizes/font_size = 12
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1827984978]
-environment = ExtResource("3_ow5a4")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1259563194]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-light_color = Color(0.9790301, 0.9764189, 0.99999994, 1)
-light_energy = 0.5
-shadow_enabled = true
-
-[node name="Car" parent="." unique_id=1654227961 instance=ExtResource("3_k2fmo")]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1, 0, 170)
-
-[node name="ErrorContainer" type="Node3D" parent="Car" unique_id=1434577520]
-
-[node name="RoadManager" type="Node3D" parent="." unique_id=1079258026]
-script = ExtResource("4_l3cfh")
+[node name="ErrorSFX" type="AudioStreamPlayer" parent="." unique_id=890861541]
+stream = ExtResource("7_hujxm")
+volume_db = -20.0
+max_polyphony = 15
 
 [node name="Dialogue" parent="." unique_id=2035017705 instance=ExtResource("3_l3cfh")]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
-
-[node name="IntroTextTrigger" type="Area3D" parent="." unique_id=215183779]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroTextTrigger" unique_id=695759370]
-shape = SubResource("BoxShape3D_l3cfh")
-
-[node name="WorldMorphTrigger" type="Area3D" parent="." unique_id=1833994482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMorphTrigger" unique_id=128379790]
-shape = SubResource("BoxShape3D_6q06x")
-
-[node name="ErrorSFX" type="AudioStreamPlayer" parent="." unique_id=890861541]
-stream = ExtResource("7_hujxm")
-volume_db = -20.0
-max_polyphony = 15
 
 [node name="Noise" type="ColorRect" parent="." unique_id=566252816]
 texture_filter = 1
@@ -89,6 +238,55 @@ mouse_filter = 2
 [node name="StaticSFX" type="AudioStreamPlayer" parent="Noise" unique_id=2010132750]
 stream = ExtResource("9_b1x3f")
 volume_db = -10.0
+playback_type = 1
+parameters/looping = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1827984978]
+environment = ExtResource("3_ow5a4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1259563194]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.9790301, 0.9764189, 0.99999994, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Car" parent="." unique_id=1654227961 instance=ExtResource("3_k2fmo")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1, 0, 180)
+
+[node name="ErrorContainer" type="Node3D" parent="Car" unique_id=1434577520]
+
+[node name="Head" type="MeshInstance3D" parent="Car" unique_id=1207987576]
+transform = Transform3D(0.0028434722, -0.0078123687, 0.06950449, -0.06577846, -0.023941386, -4.7779675e-10, 0.023771951, -0.06531282, -0.008313754, 1.1944245, 1.110576, -0.85178906)
+visible = false
+mesh = ExtResource("5_blune")
+surface_material_override/0 = ExtResource("6_th5th")
+surface_material_override/1 = ExtResource("7_7smn1")
+
+[node name="RoadManager" type="Node3D" parent="." unique_id=1079258026]
+script = ExtResource("4_l3cfh")
+
+[node name="IntroTextTrigger" type="Area3D" parent="." unique_id=215183779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroTextTrigger" unique_id=695759370]
+shape = SubResource("BoxShape3D_l3cfh")
+
+[node name="WorldMorphTrigger" type="Area3D" parent="." unique_id=1833994482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMorphTrigger" unique_id=128379790]
+shape = SubResource("BoxShape3D_6q06x")
+
+[node name="PeekTrigger" type="Area3D" parent="." unique_id=1687245485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 300)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PeekTrigger" unique_id=246930246]
+shape = SubResource("BoxShape3D_blune")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=191416011]
+root_node = NodePath("../Car")
+libraries/ = SubResource("AnimationLibrary_7smn1")
 
 [connection signal="body_entered" from="IntroTextTrigger" to="." method="_on_intro_text_trigger_body_entered"]
 [connection signal="body_entered" from="WorldMorphTrigger" to="." method="_on_world_morph_trigger_body_entered"]
+[connection signal="body_entered" from="PeekTrigger" to="." method="_on_peek_trigger_body_entered"]
