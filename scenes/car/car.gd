@@ -5,6 +5,7 @@ const SPEED = 400
 const ACCELERATION = 1
 const DECELERATION = 3
 const CAMERA_LATENCY = 50
+const PICKED_UP_CAMERA_LATENCY = 10
 
 var can_move = true
 @onready var camera_anchor:Node3D = $CameraIdlePos
@@ -33,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	if picked_up:
-		$Neck.global_position = lerp($Neck.global_position, camera_anchor.global_position + Vector3(-0.1, 0.1, -0.1), CAMERA_LATENCY * delta)
+		$Neck.global_position = lerp($Neck.global_position, camera_anchor.global_position + Vector3(-0.1, 0.1, -0.1), PICKED_UP_CAMERA_LATENCY * delta)
 		$Neck/XPivot/Camera3D.look_at(monster_head.global_position, Vector3.UP)
 	else:
 		$Neck.global_position = lerp($Neck.global_position, camera_anchor.global_position, CAMERA_LATENCY * delta)

@@ -2,6 +2,7 @@ extends Node3D
 
 
 const ERROR = preload("res://scenes/error/error.tscn")
+const ERROR_BLUE = preload("res://scenes/error/error_blue.tscn")
 const BLOOD = preload("res://scenes/main/blood.tres")
 const CREATURE = preload("res://assets/country-road-creature-rig/source/Creature.fbx")
 
@@ -79,13 +80,39 @@ func _on_run_trigger_body_entered(body: Node3D) -> void:
 
 func _on_attack_trigger_body_entered(body: Node3D) -> void:
 	if body.name == "Car":
+		
+		
+		$Noise/StaticSFX.volume_db = -60
+		$Noise/StaticSFX.play()
+		
 		$AttackTrigger/Creature.visible = true
 		$Car.can_move = false
 		var tween = get_tree().create_tween()
-		tween.tween_property($AttackTrigger/Creature, "global_position", $Car.position + Vector3(0.0,0.0,6.0), 4)
+		tween.tween_method(func(v): $Noise.material.set_shader_parameter("noise_intensity", v), 0.0, 0.2, 6).set_trans(Tween.TRANS_SINE)
+		tween.parallel().tween_property($Noise/StaticSFX, "volume_db", -20, 6)
+		tween.parallel().tween_property($AttackTrigger/Creature, "global_position", $Car.position + Vector3(0.0,0.0,4.0), 6)
+		
 		tween.tween_callback(func():
 			$AttackTrigger/AnimationTree.get("parameters/playback").travel("A")
 			$Car.picked_up = true
 			$Car.monster_head = $AttackTrigger/Creature/road_creature_reference_skeleton/Skeleton3D/Head
 			$Car.camera_anchor = $AttackTrigger/Creature/road_creature_reference_skeleton/Skeleton3D/Pin
+			
+			await get_tree().create_timer(1.0).timeout
+			for i in range(50):
+				for j in range(20):
+					var sprite:Sprite3D = ERROR_BLUE.instantiate()
+					sprite.position = Vector3(
+						randf_range(-2, 2),
+						randf_range(-2, 2),
+						randf_range(-2, 0)
+					)
+					$Car/Neck/XPivot/Camera3D.add_child(sprite)
+				$Noise/ErrorSFX.play()
+				await get_tree().create_timer(clamp(1/(i+0.001), 0.05, 1.0)).timeout
 		)
+		tween.tween_method(func(v): $Noise.material.set_shader_parameter("noise_intensity", v), 0.1, 0.5, 6).set_trans(Tween.TRANS_SINE)
+		
+		
+		await get_tree().create_timer(13.0).timeout
+		get_tree().change_scene_to_file("res://scenes/otherworld/otherworld.tscn")

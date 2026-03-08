@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ccycdl5xa434k"]
+
+[ext_resource type="FontFile" uid="uid://cepqwph0cg88i" path="res://assets/Pix32.ttf" id="1_c30gf"]
+
+[node name="ErrorBlueVp" type="SubViewport" unique_id=1723833568]
+size = Vector2i(40, 15)
+
+[node name="Control" type="Control" parent="." unique_id=50701202]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1492965143]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 1, 1)
+
+[node name="Label" type="Label" parent="Control" unique_id=1470206450]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_c30gf")
+theme_override_font_sizes/font_size = 12
+text = "ERROR!"
+horizontal_alignment = 1
