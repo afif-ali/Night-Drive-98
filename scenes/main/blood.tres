@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://biyeeltolf7jo"]
+
+[ext_resource type="Shader" uid="uid://cg20c8fphcbxa" path="res://scenes/main/blood.gdshader" id="1_23q1b"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_23q1b"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dgtd2"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_23q1b")
+seamless = true
+in_3d_space = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_23q1b")
+shader_parameter/noise = SubResource("NoiseTexture2D_dgtd2")
+shader_parameter/noise_shading = 1.0
+shader_parameter/intensity = 0.0
+shader_parameter/color = Color(0.4812734, 1.0709092e-06, 3.6098064e-07, 1)

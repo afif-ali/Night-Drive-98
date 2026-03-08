@@ -6,6 +6,8 @@ const ACCELERATION = 1
 const DECELERATION = 3
 const CAMERA_LATENCY = 50
 
+var can_move = true
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$Neck.top_level = true
@@ -19,7 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			$Neck/XPivot.rotation.x = clamp($Neck/XPivot.rotation.x, deg_to_rad(-5), deg_to_rad(5))
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("accelerate"):
+	if Input.is_action_pressed("accelerate") and can_move:
 		velocity.z = lerp(velocity.z, SPEED * delta, ACCELERATION * delta)
 	else:
 		velocity.z = lerp(velocity.z, 0.0, DECELERATION * delta)

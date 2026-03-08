@@ -2,6 +2,7 @@
 extends Node3D
 
 const ROAD_MESH:PackedScene = preload("res://assets/psx-road/source/road-module.blend")
+const BLOOD = preload("uid://biyeeltolf7jo")
 
 var modules:Array[Node3D]
 
@@ -30,4 +31,6 @@ func _process(_delta:float) -> void:
 func create_chunk(pos:int)->Node3D:
 	var mesh:Node3D = ROAD_MESH.instantiate()
 	mesh.position = Vector3(0,0,pos*80)
+	for node:MeshInstance3D in mesh.find_children("*", "MeshInstance3D", true):
+		node.material_overlay = BLOOD
 	return mesh
