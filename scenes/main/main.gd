@@ -3,6 +3,7 @@ extends Node3D
 
 const ERROR = preload("res://scenes/error/error.tscn")
 const BLOOD = preload("res://scenes/main/blood.tres")
+const CREATURE = preload("res://assets/country-road-creature-rig/source/Creature.fbx")
 
 
 func _process(delta: float) -> void:
@@ -36,7 +37,7 @@ func _on_world_morph_trigger_body_entered(body: Node3D) -> void:
 					randf_range(-1, 3)
 				)
 				$Car/ErrorContainer.add_child(sprite)
-			$ErrorSFX.play()
+			$Noise/ErrorSFX.play()
 			await get_tree().create_timer(clamp(1/(i+0.001), 0.05, 1.0)).timeout
 		
 		$Car.can_move = false
@@ -53,10 +54,36 @@ func _on_world_morph_trigger_body_entered(body: Node3D) -> void:
 		$Car.can_move = true
 
 		$Dialogue.say("What the hell is going on...")
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(5).timeout
 		$Dialogue.reset()
 
 
 func _on_peek_trigger_body_entered(body: Node3D) -> void:
 	if body.name == "Car":
 		$AnimationPlayer.play("peek")
+
+
+func _on_run_trigger_body_entered(body: Node3D) -> void:
+	if body.name == "Car":
+		$RunTrigger/Creature.visible = true
+		var tween = get_tree().create_tween()
+		tween.tween_property($RunTrigger/Creature, "position", Vector3(80, 0, 20), 8)
+		$RunTrigger/Creature/AnimationPlayer.play("road_creature_reference_skeleton|0500", -1, 2.0)
+		await get_tree().create_timer(1.5).timeout
+		$Noise/JumpscareSFX.play()
+		tween.finished.connect(
+			func():
+				$RunTrigger/Creature.queue_free()
+		)
+
+
+func _on_attack_trigger_body_entered(body: Node3D) -> void:
+	if body.name == "Car":
+		$AttackTrigger/Creature.visible = true
+		$Car.can_move = false
+		var tween = get_tree().create_tween()
+		tween.tween_property($AttackTrigger/Creature, "global_position", $Car.position + Vector3(0.0,0.0,6.0), 4)
+		tween.tween_callback(func():
+			$AttackTrigger/AnimationTree.get("parameters/playback").travel("A")
+			$Car.position = $RunTrigger/Creature/road_creature_reference_skeleton/Skeleton3D/Pin.global_position
+		)

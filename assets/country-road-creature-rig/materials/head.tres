@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://hlyvs1tlovpl" path="res://assets/country-road-creature-rig/textures/head.png" id="1_jbpph"]
 
 [resource]
-albedo_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+albedo_color = Color(0.15487596, 0.154876, 0.15487596, 1)
 albedo_texture = ExtResource("1_jbpph")
