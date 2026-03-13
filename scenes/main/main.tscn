@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dy4opjmvfxs3l" path="res://scenes/dialogue/dialogue.tscn" id="3_l3cfh"]
 [ext_resource type="Environment" uid="uid://b1hi51c7b8jdg" path="res://scenes/main/normal_env.tres" id="3_ow5a4"]
 [ext_resource type="Script" uid="uid://cwhqq73jhoe3k" path="res://scenes/main/road_manager.gd" id="4_l3cfh"]
-[ext_resource type="FontFile" uid="uid://cepqwph0cg88i" path="res://assets/Pix32.ttf" id="5_6q06x"]
 [ext_resource type="ArrayMesh" uid="uid://crgafi1hsrprh" path="res://assets/country-road-creature-rig/source/head.obj" id="5_blune"]
 [ext_resource type="AudioStream" uid="uid://osy2ndslodhi" path="res://assets/jumpscare.mp3" id="6_7smn1"]
 [ext_resource type="Material" uid="uid://cpxvtk1fwygv2" path="res://assets/country-road-creature-rig/materials/head.tres" id="6_th5th"]
@@ -4738,19 +4737,6 @@ _data = {
 [node name="Main" type="Node3D" unique_id=119509902]
 script = ExtResource("1_l3cfh")
 
-[node name="DebugScreen" type="Control" parent="." unique_id=2083620132]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="DebugScreen" unique_id=1025862728]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("5_6q06x")
-theme_override_font_sizes/font_size = 12
-
 [node name="Dialogue" parent="." unique_id=2035017705 instance=ExtResource("3_l3cfh")]
 offset_left = 0.0
 offset_top = 0.0
@@ -4832,7 +4818,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 400)
 shape = SubResource("BoxShape3D_th5th")
 
 [node name="Creature" parent="RunTrigger" unique_id=1396141180 instance=ExtResource("10_a8run")]
-transform = Transform3D(-0.1736482, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, -0.1736482, -40, 0, 20)
+transform = Transform3D(-0.1736482, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, -0.1736482, -40, 0, 15)
 visible = false
 
 [node name="AttackTrigger" type="Area3D" parent="." unique_id=1258891406]
@@ -4861,6 +4847,8 @@ anim_player = NodePath("../Creature/AnimationPlayer")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=191416011]
 root_node = NodePath("../Car")
 libraries/ = SubResource("AnimationLibrary_7smn1")
+
+[node name="Timer" type="Timer" parent="." unique_id=584663511]
 
 [connection signal="body_entered" from="IntroTextTrigger" to="." method="_on_intro_text_trigger_body_entered"]
 [connection signal="body_entered" from="WorldMorphTrigger" to="." method="_on_world_morph_trigger_body_entered"]

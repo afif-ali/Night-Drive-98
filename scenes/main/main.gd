@@ -7,9 +7,6 @@ const BLOOD = preload("res://scenes/main/blood.tres")
 const CREATURE = preload("res://assets/country-road-creature-rig/source/Creature.fbx")
 
 
-func _process(delta: float) -> void:
-	$DebugScreen/Label.text = str($Car.position)
-
 func _on_intro_text_trigger_body_entered(body: Node3D) -> void:
 	if body.name == "Car":
 		$Dialogue.say("Its starting to get dark out ...")
@@ -39,7 +36,8 @@ func _on_world_morph_trigger_body_entered(body: Node3D) -> void:
 				)
 				$Car/ErrorContainer.add_child(sprite)
 			$Noise/ErrorSFX.play()
-			await get_tree().create_timer(clamp(1/(i+0.001), 0.05, 1.0)).timeout
+			$Timer.start(clamp(1/(i+0.001), 0.05, 1.0))
+			await $Timer.timeout
 		
 		$Car.can_move = false
 		$Noise.material.set_shader_parameter("noise_intensity", 1.0)
@@ -109,7 +107,8 @@ func _on_attack_trigger_body_entered(body: Node3D) -> void:
 					)
 					$Car/Neck/XPivot/Camera3D.add_child(sprite)
 				$Noise/ErrorSFX.play()
-				await get_tree().create_timer(clamp(1/(i+0.001), 0.05, 1.0)).timeout
+				$Timer.start(clamp(1/(i+0.001), 0.05, 1.0))
+				await $Timer.timeout
 		)
 		tween.tween_method(func(v): $Noise.material.set_shader_parameter("noise_intensity", v), 0.1, 0.5, 6).set_trans(Tween.TRANS_SINE)
 		
